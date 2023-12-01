@@ -1,26 +1,26 @@
 {
     "compilerOptions": {
-	"outDir": "./dist",
-	"rootDir": "./src",
-        "lib": ["ESNext"],
-        "module": "esnext",
-        "target": "esnext",
-        "moduleResolution": "bundler",
-        "moduleDetection": "force",
-        "allowImportingTsExtensions": true,
-        "noEmit": true,
+        "outDir": "dist",
+        "rootDir": "src",
+
+        "experimentalDecorators": true,     
+        "emitDecoratorMetadata": true,
+        "lib": ["es5", "es6", "dom"],  
+        "moduleResolution": "node",
+        "module": "commonjs",
+        "target": "es6",
         "composite": true,
-        "strict": true,
+        "strict": false,
         "downlevelIteration": true,
-        "skipLibCheck": true,
         "jsx": "react-jsx",
         "jsxImportSource": "hono/jsx",
-        "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
-        "allowJs": true,
-        "types": [
-        ]
-
+        "strictPropertyInitialization": false,
+        "noImplicitAny": false,
+        "strictNullChecks": false,
+         "esModuleInterop": true,
+        "exactOptionalPropertyTypes": false,
+        "types": ["node"]
     },
     "include": ["./src/**/*"],
     "exclude": []

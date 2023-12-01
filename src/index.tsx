@@ -1,18 +1,27 @@
 import { Hono } from 'hono'
-// import { MessagesDatabase } from './db'
 import api from './routes'
 import { serve } from '@hono/node-server'
 import { serveStatic } from '@hono/node-server/serve-static'
+import { configDotenv } from 'dotenv'
+import { dbSource } from './database'
+import "reflect-metadata";
+import transactionDetailsRoutes from './Views/Admin/TransactionDetails/routes'
 
-//export const db = new MessagesDatabase()
+configDotenv();
+dbSource.initialize()
+    .then(() => {
+        console.log("Data Source has been initialized!")
+    })
+    .catch((err) => {
+        console.error("Error during Data Source initialization:", err)
+    });
 
 const app = new Hono()
 
 app.use('/assets/*', serveStatic({ root: './' }))
 
-//app.get('/', (c) => c.text("aaaa"))
 app.route('/', api)
-// app.route('/single-chat', singleChatRoutes)
+app.route('/transaction-details', transactionDetailsRoutes)
 
 serve({
     fetch: app.fetch,
