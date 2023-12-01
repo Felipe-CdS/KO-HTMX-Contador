@@ -10,6 +10,7 @@ const app = new Hono()
 
 app.use('/assets/*', serveStatic({ root: './' }))
 
+//app.get('/', (c) => c.text("aaaa"))
 app.route('/', api)
 // app.route('/single-chat', singleChatRoutes)
 
